@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contabilidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+                <h2></h2>
+                <button id="adicionar">Adicionar Mês</button>
+        </header>
+
+        <div id="planilha"></div> <!--Onde está os bloquinhos de contabilidade-->
+    </div>
+    
+    <div id="adicionarMes">
+        <h1>Selecione o Mês</h1>
+        <input type="month" id="seletorMes">
+        <button id="fechar">X</button>
+    </div>
+
+    <div id="nome">
+        <input type="text" placeholder="Digite seu nome..." id="nomeInput">
+        <button id="salvarNome">Salvar</button>
+    </div>
+
+    <div id="novoValor">
+        <table border="1">
+            <thead>
+                <th>Descrição</th>
+                <th>valor</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="colorBlack" id="descricao" placeholder="Nome do Saldo..."></td>
+                    <td><input type="text" class="colorBlack" id="valor" placeholder="00"></td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <button id="salvar">Salvar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
