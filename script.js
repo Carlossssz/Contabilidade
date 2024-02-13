@@ -126,33 +126,6 @@ seletorMes.addEventListener("input", function(){
     }, 550);
 })
 
-//Salva o nome no LocalStorage
-/*let blocoNome = document.querySelector("#nome");
-let salvarNome = document.querySelector("#salvarNome");
-let nomeInput = document.querySelector("#nomeInput");
-let nomeAtual = localStorage.getItem("nome"); //Pega o valor do localStorage;
-let nome = document.querySelector("header h2");
-
-salvarNome.addEventListener("click", function(){
-    let nomeLetras = nomeInput.value;
-    if(nomeLetras.length >= 2){
-
-        localStorage.setItem("nome", nomeLetras); //Define o nome no localStorage;
-        location.reload();
-        blocoNome.style.display = "none";
-    }
-    else{
-        alert("Nome deve conter mais de duas letras!");
-    }
-})
-
-if(nomeAtual === "" || nomeAtual === null){
-    blocoNome.style.display = "flex";
-}
-
-nome.textContent = nomeAtual; //Adiciona o nome presente no localStorage à página;
-*/
-
 //Função para excluir o mes;
 function excluirMes(mes){
     let mesLS = localStorage.getItem("localStorageMes");

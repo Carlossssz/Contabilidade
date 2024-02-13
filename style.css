@@ -274,32 +274,6 @@ header button:active{
     animation: animarReverse  0.5s reverse;
 }
 
-/*Bloco de nome
-#nome{
-    position: absolute;
-    width: 52%;
-    max-width: 500px;
-    height: 5%;
-    background-color: rgb(117, 92, 138);
-    box-shadow: inset 2px 2px 2px rgb(181, 120, 231), inset -2px -2px 2px rgb(46, 20, 61);
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-#nome input{
-    outline: none;
-    border: none;
-    height: 60%;
-    width: 50%;
-    padding: 0px 2px;
-    margin: 0 10%;
-}
-#nome button{
-    width: 12%;
-    height: 50%;
-    cursor: pointer;
-}*/
-
 #novoValor{
     position: absolute;
     width: 80%;
