@@ -127,7 +127,7 @@ seletorMes.addEventListener("input", function(){
 })
 
 //Salva o nome no LocalStorage
-let blocoNome = document.querySelector("#nome");
+/*let blocoNome = document.querySelector("#nome");
 let salvarNome = document.querySelector("#salvarNome");
 let nomeInput = document.querySelector("#nomeInput");
 let nomeAtual = localStorage.getItem("nome"); //Pega o valor do localStorage;
@@ -151,18 +151,48 @@ if(nomeAtual === "" || nomeAtual === null){
 }
 
 nome.textContent = nomeAtual; //Adiciona o nome presente no localStorage à página;
-
+*/
 
 //Função para excluir o mes;
 function excluirMes(mes){
     let mesLS = localStorage.getItem("localStorageMes");
     mesLS = JSON.parse(mesLS);
-    
     mesLS = mesLS.filter(objeto => objeto.data !== mes);
     let mesString = JSON.stringify(mesLS);
-    localStorage.setItem("localStorageMes", mesString);
-    location.reload();
+
+    console.log(mesLS)
+
+    let cont = document.createElement("div");
+    cont.id = "blocoExcluir";
+    cont.innerHTML = `
+        <h2>Excluir o mês de ${meses[mes]}?</h2>
+        <div>
+            <button id="excluirSim">Sim</button>
+            <button id="excluirNao">Não</button>
+        </div>
+    `
+    document.body.appendChild(cont);
+    
+    let btnSim = document.querySelector("#excluirSim");
+    let btnNao = document.querySelector("#excluirNao");
+
+    btnSim.addEventListener("click", function(){
+        localStorage.setItem("localStorageMes", mesString);
+        location.reload();
+    })
+
+    btnNao.addEventListener("click", function(){
+        document.body.removeChild(cont);
+    })
 }
+
+
+//Fechar Janela de AdicionarValor;
+let fecharValor = document.querySelector("#fecharValor");
+fecharValor.addEventListener("click", function(){
+    let blocoValor = document.querySelector("#novoValor");
+    blocoValor.style.display = "none";
+})
 
 //Função para adicionar um novo valor ao objeto; 
 function adicionarValor(mes){
