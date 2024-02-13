@@ -31,7 +31,7 @@ body{
 header{
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     font-size: 20px;
     align-items: center;
     margin-top: 2%;
@@ -44,8 +44,6 @@ header button{
     height: 80%;
     width: 22%;
     font-size: 18px;
-    position: relative;
-    right: -38%;
     cursor: pointer;
     border: none;
     background-color: cornflowerblue;
@@ -56,10 +54,6 @@ header button:hover{
 }
 header button:active{
     box-shadow: -2px -2px black
-}
-
-header h2{
-    position: absolute;
 }
 
 /*Planinha*/
@@ -331,4 +325,28 @@ header h2{
     background-color: rgb(62, 59, 85);
     color: white;
     text-shadow: 1px 1px 1.5px black;
+}
+
+@media (max-width: 760px){
+    h2{
+        font-size: 20px;
+    }
+
+    .container{
+        width: 100%;
+        height: 100%;
+    }
+
+    #adicionar{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 478px){
+    h2{
+        font-size: 12px;
+    }
+    #adicionar{
+        font-size: 10px;
+    }
 }
