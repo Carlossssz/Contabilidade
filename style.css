@@ -350,7 +350,7 @@ header button:active{
 
 @media (max-width: 478px){
     h2{
-        font-size: 12px;
+        font-size: 15px;
     }
     #adicionar{
         font-size: 10px;
@@ -363,5 +363,13 @@ header button:active{
     #planilha tr td:nth-child(3){
     width: 5%;
     padding: 3px;
-}
+    }
+
+    #planilha h2{
+        margin-top: 5px;
+    }
+    #planilha,
+    #planilha table{
+        width: 100%;
+    }
 }
