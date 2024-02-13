@@ -119,9 +119,14 @@ header button:active{
     width: 40%;
 }
 
+#planilha tr th:nth-child(4){
+    padding: 3px;
+}
+
 #planilha tr th:nth-child(3),
 #planilha tr td:nth-child(3){
-    width: 3%;
+    width: 4%;
+    padding: 3px;
 }
 
 #planilha thead{
@@ -133,6 +138,7 @@ header button:active{
 .excluir{
     background: rgb(143, 69, 69);
     cursor: pointer;
+    padding: 3px;
 }
 .excluir:hover{
     background-color: red;
@@ -349,4 +355,13 @@ header button:active{
     #adicionar{
         font-size: 10px;
     }
+    table *{
+        font-size: 15px;
+    }
+
+    #planilha tr th:nth-child(3),
+    #planilha tr td:nth-child(3){
+    width: 5%;
+    padding: 3px;
+}
 }
