@@ -207,10 +207,10 @@ header button:active{
 
 .fechar{
     position: absolute;
-    right: 4px;
+    right: 5px;
     top: 4px;
     cursor: pointer;
-    width: 30px;
+    width: 70px;
     height: 30px;
     font-size: 20px;
     text-align: center;
@@ -403,5 +403,11 @@ header button:active{
     }
     .blocoExcluir button{
         width: 30%;
+    }
+
+    .fechar{
+        height: 13%;
+        font-size: 12px;
+        width: 60px;
     }
 }

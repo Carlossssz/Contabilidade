@@ -39,16 +39,15 @@ adicionar.addEventListener("click", function(){
 });
 
 //Função para organizar os itens:
-function ordem(lista){
+function ordem(lista, propriedade){
     let arrayLength = lista.length; //Pega a quantia de itens dentro do array
     let houveTroca;     //variável para verificar se ouve uma troca de lugar entre os valores
-
     do {
         houveTroca = false;
 
         for(let i = 0; i < arrayLength -1; i++){
-            let elemento1 = parseInt(lista[i].data); //aqui objeto[objetoParaArray[i]] passa o valor de objetoParaArray na posição (i) como parâmetro para objeto, objeto["janeiro"].data.
-            let elemento2 = parseInt(lista[i + 1].data); //aqui [i + 1], é para pegar o próximo elemento em relação ao elemento atual representado por (i);
+            let elemento1 = parseInt(lista[i][propriedade]); //aqui objeto[objetoParaArray[i]] passa o valor de objetoParaArray na posição (i) como parâmetro para objeto, objeto["janeiro"].data.
+            let elemento2 = parseInt(lista[i + 1][propriedade]); //aqui [i + 1], é para pegar o próximo elemento em relação ao elemento atual representado por (i);
             // Se o elemento atual é maior que o próximo, troca-os de lugar
 
             if(elemento1 > elemento2){ 
@@ -64,7 +63,6 @@ function ordem(lista){
     // Retorna o objeto ordenado
     return lista;
 }
-
 
 //Transforma o Mes de decimal para seu nome correspondente;
 const meses = {
@@ -100,12 +98,12 @@ seletorMes.addEventListener("input", function(){
         data: mesNumeroUnico,
         ano: ano
     })
-    mesOrdenado = ordem(localMes); //ordena os meses
+    mesOrdenado = ordem(localMes, 'data'); //ordena os meses
     mesString = JSON.stringify(mesOrdenado) //Transforma o array/objeto em string
     
     let pegarMesesLocalStorage = JSON.parse(localStorage.getItem("localStorageMes")) || []; //pegarMesesLocalStorage vai receber [] caso localStorageMes não exista no localStorage;
     let mesesConcatenados = [...pegarMesesLocalStorage, ...mesOrdenado]
-    mesesConcatenados = ordem(mesesConcatenados)
+    mesesConcatenados = ordem(mesesConcatenados, 'data')
     mesConcat = JSON.stringify(mesesConcatenados);
 
     if(pegarMesesLocalStorage === "" || pegarMesesLocalStorage === null){
@@ -218,6 +216,7 @@ function adicionarValor(mes){
             localStorage.setItem("localStorageMes", mesLSNoBug);
 
             blocoValor.style.display = "none";
+            valoresDecrescentes();
             location.reload();
 
         }else if(valorInput === "" || descricao === ""){
@@ -306,7 +305,6 @@ function valores(){
 }
 valores();
 
-//listaArray.findIndex(objeto => objeto.mes === "Fevereiro");
 console.log(listaArray)
 
 let fechar = document.querySelector("#fechar");
@@ -417,4 +415,20 @@ function somatoria(){
         let listaMesString = JSON.stringify(listaDeMes);
         localStorage.setItem("localStorageMes", listaMesString);
     }
+}
+
+function valoresDecrescentes(){
+    let listaDeMes = localStorage.getItem("localStorageMes");
+    listaDeMes = JSON.parse(listaDeMes);
+
+    if (listaDeMes !== null){
+        listaDeMes.forEach((mes)=>{
+            if(mes.valor !== undefined){
+                mes.valor = ordem(mes.valor, 'valor');
+            }
+        })
+    }
+    mesString = JSON.stringify(listaDeMes)
+    localStorage.setItem("localStorageMes", mesString);
+    location.reload();
 }
