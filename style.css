@@ -144,7 +144,7 @@ header button:active{
     background-color: red;
 }
 
-#blocoExcluir{
+.blocoExcluir{
     width: 70%;
     height: 20%;
     background-color: #b19595;
@@ -156,7 +156,7 @@ header button:active{
     border: solid 1px black;
     box-shadow: 0 1px 50px 1px black;
 }
-#blocoExcluir div{
+.blocoExcluir div{
     width: 100%;
     height: 20%;
     display: flex;
@@ -164,7 +164,7 @@ header button:active{
     justify-content: center;
     margin-top: 5%;
 }
-#blocoExcluir button{
+.blocoExcluir button{
     width: 15%;
     height: 100%;
     border: none;
@@ -173,11 +173,11 @@ header button:active{
     box-shadow: 0 1px 2px 1px black;
     background-color: #95adb1;
 }
-#blocoExcluir button:hover{
+.blocoExcluir button:hover{
     cursor: pointer;
     background-color: #97c6ce;
 }
-#blocoExcluir button:active{
+.blocoExcluir button:active{
     box-shadow: none;
 }
 
@@ -384,6 +384,24 @@ header button:active{
     }
     #planilha,
     #planilha table{
+        width: 99.5%;
+    }
+
+    #novoValor{
         width: 100%;
+    }
+    #novoValor table{
+        width: 85%;
+    }
+    #novoValor #salvar{
+        width: 35%;
+    }
+
+    .blocoExcluir{
+        width: 96%;
+        height: 25%;
+    }
+    .blocoExcluir button{
+        width: 30%;
     }
 }

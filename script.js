@@ -133,21 +133,19 @@ function excluirMes(mes){
     mesLS = mesLS.filter(objeto => objeto.data !== mes);
     let mesString = JSON.stringify(mesLS);
 
-    console.log(mesLS)
-
     let cont = document.createElement("div");
-    cont.id = "blocoExcluir";
+    cont.className = "blocoExcluir";
     cont.innerHTML = `
         <h2>Excluir o mês de ${meses[mes]}?</h2>
         <div>
-            <button id="excluirSim">Sim</button>
-            <button id="excluirNao">Não</button>
+            <button class="excluirSim">Sim</button>
+            <button class="excluirNao">Não</button>
         </div>
     `
     document.body.appendChild(cont);
     
-    let btnSim = document.querySelector("#excluirSim");
-    let btnNao = document.querySelector("#excluirNao");
+    let btnSim = document.querySelector(".excluirSim");
+    let btnNao = document.querySelector(".excluirNao");
 
     btnSim.addEventListener("click", function(){
         localStorage.setItem("localStorageMes", mesString);
@@ -188,7 +186,10 @@ function adicionarValor(mes){
         let valor = parseFloat(valorInput);
         let descricao = document.querySelector("#descricao"). value;
         let listaDeValores;
-        let data = `${dataAtual.getDate()}/${(dataAtual.getMonth() + 1).toString().padStart(2, '0')}/${dataAtual.getFullYear()}`;
+        let dataMes = (dataAtual.getMonth() + 1).toString().padStart(2, '0');
+        dataMes = meses[dataMes];
+        dataMes = dataMes.slice(0, 3)
+        let data = `${dataAtual.getDate()} - ${dataMes}`;
 
         if(valor !== "" &&  !isNaN(valor)  && descricao !== ""){
             let estilo;
@@ -285,6 +286,7 @@ function valores(){
                     let novoTr = document.createElement("tr");
                     novoTr.id = valorAtual.id
                     novoTr.className = "valoTr"
+                    novoTr.dataset.descricao = valorAtual.descricao
 
                     novoTr.innerHTML = `
                         <td>${valorAtual.descricao}</td>
@@ -329,24 +331,46 @@ function excluirMini(){
         elemento.addEventListener("click", function(){
             let elementoID = elemento.dataset.id;
             let valorExcluir = document.querySelector(`#${elementoID}`);
-            let tbodyPai = valorExcluir.parentNode;
-            tbodyPai.removeChild(valorExcluir);
+            let descricao = valorExcluir.dataset.descricao;
 
-            if (listaDeMes !== null){
-                listaDeMes.forEach((mes)=>{
-                    let valorLista = mes.valor
-                    if(valorLista !== undefined){
-                        let objetoId = valorLista.filter(function(objeto){
-                            return objeto.id !== elementoID; //pega todos os elementos, menos o que corresponde
-                        })
+            let cont = document.createElement("div");
+            cont.className = "blocoExcluir";
+            cont.innerHTML = `
+                <h2>Excluir "${descricao}"?</h2>
+                <div>
+                    <button class="excluirSim">Sim</button>
+                    <button class="excluirNao">Não</button>
+                </div>
+            `
+            document.body.appendChild(cont);
+            
+            let btnSim = document.querySelector(".excluirSim");
+            let btnNao = document.querySelector(".excluirNao");
 
-                        mes.valor = objetoId;
-                    }
-                })
-                let listaMesString = JSON.stringify(listaDeMes);
-                localStorage.setItem("localStorageMes", listaMesString);
-            }
-            somatoria();
+            btnSim.addEventListener("click", function(){
+                let tbodyPai = valorExcluir.parentNode;
+                tbodyPai.removeChild(valorExcluir);
+    
+                if (listaDeMes !== null){
+                    listaDeMes.forEach((mes)=>{
+                        let valorLista = mes.valor
+                        if(valorLista !== undefined){
+                            let objetoId = valorLista.filter(function(objeto){
+                                return objeto.id !== elementoID; //pega todos os elementos, menos o que corresponde
+                            })
+    
+                            mes.valor = objetoId;
+                        }
+                    })
+                    let listaMesString = JSON.stringify(listaDeMes);
+                    localStorage.setItem("localStorageMes", listaMesString);
+                    document.body.removeChild(cont);
+                }
+                somatoria();
+            })
+            btnNao.addEventListener("click", function(){
+                document.body.removeChild(cont);
+            })
         })
     })
 }
