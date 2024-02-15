@@ -82,12 +82,14 @@ header button:active{
 .planilhaBloco{
     text-align: center;
     padding: 2px;
-    margin-bottom: 3%;
+    margin-bottom: 30px;
     background-color: rgb(102, 114, 131);
     box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.623);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 #planilha table{
@@ -182,10 +184,18 @@ header button:active{
 }
 
 .adicionarValor{
-    background-color: #748194 !important;
+    background: cornflowerblue ;
+    border-radius: 50px;
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 1px 10px 1px black;
+    
 }
 .adicionarValor:hover{
-    background-color: rgb(153, 153, 153) !important;
+    background-color: rgba(0, 0, 0, 0.123);
     cursor: pointer;
 }
 
@@ -369,6 +379,9 @@ header button:active{
     #adicionar{
         font-size: 10px;
     }
+    .adicionarValor{
+        margin-top: 5px;
+    }
     table *{
         font-size: 15px;
     }
@@ -409,5 +422,14 @@ header button:active{
         height: 13%;
         font-size: 12px;
         width: 60px;
+    }
+
+    .container header{
+        height: 8%;
+    }
+    .container header button{
+        width: 50%;
+        font-size: 17px !important;
+        font-weight: bolder;
     }
 }

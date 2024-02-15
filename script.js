@@ -251,7 +251,7 @@ function container(){
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="5" class="adicionarValor" onclick="adicionarValor('${mes.mes}')">Adicionar valor</td>
+                        <td colspan="5" style="color: #95adb1; text-shadow: none;">-</td>
                     </tr>
                     <tr>
                         <td colspan="1">Saldo Total:</td>
@@ -259,7 +259,8 @@ function container(){
                     </tr>
                     
                 </tbody>
-            </table>`
+            </table>
+            <div class="adicionarValor" onclick="adicionarValor('${mes.mes}')">Adicionar valor</div>`
             planilha.appendChild(conta);
             adicionarId();
         })
