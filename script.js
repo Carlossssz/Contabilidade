@@ -251,7 +251,7 @@ function container(){
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="5" style="color: #95adb1; text-shadow: none;">-</td>
+                        <td colspan="5" style="color: #61728b; text-shadow: none; background:none;">-</td>
                     </tr>
                     <tr>
                         <td colspan="1">Saldo Total:</td>
