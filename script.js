@@ -131,6 +131,9 @@ function excluirMes(mes){
     mesLS = mesLS.filter(objeto => objeto.data !== mes);
     let mesString = JSON.stringify(mesLS);
 
+    let backdrop = document.createElement("div");
+    backdrop.classList.add("backdrop");
+
     let cont = document.createElement("div");
     cont.className = "blocoExcluir";
     cont.innerHTML = `
@@ -140,6 +143,7 @@ function excluirMes(mes){
             <button class="excluirNao">Não</button>
         </div>
     `
+    document.body.appendChild(backdrop);
     document.body.appendChild(cont);
     
     let btnSim = document.querySelector(".excluirSim");
@@ -152,6 +156,7 @@ function excluirMes(mes){
 
     btnNao.addEventListener("click", function(){
         document.body.removeChild(cont);
+        document.body.removeChild(backdrop);
     })
 }
 
@@ -332,6 +337,9 @@ function excluirMini(){
             let valorExcluir = document.querySelector(`#${elementoID}`);
             let descricao = valorExcluir.dataset.descricao;
 
+            let backdrop = document.createElement("div");
+            backdrop.classList.add("backdrop");
+            
             let cont = document.createElement("div");
             cont.className = "blocoExcluir";
             cont.innerHTML = `
@@ -341,6 +349,7 @@ function excluirMini(){
                     <button class="excluirNao">Não</button>
                 </div>
             `
+            document.body.appendChild(backdrop);
             document.body.appendChild(cont);
             
             let btnSim = document.querySelector(".excluirSim");
@@ -364,10 +373,12 @@ function excluirMini(){
                     let listaMesString = JSON.stringify(listaDeMes);
                     localStorage.setItem("localStorageMes", listaMesString);
                     document.body.removeChild(cont);
+                    document.body.removeChild(backdrop);
                 }
                 somatoria();
             })
             btnNao.addEventListener("click", function(){
+                document.body.removeChild(backdrop);
                 document.body.removeChild(cont);
             })
         })
